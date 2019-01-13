@@ -2,8 +2,9 @@ def consolidate_cart(cart)
   new_hash = {}
   cart.each do array
     array.each do |fruit, infos|
-    new_hash[fruit] = infos
-    new_hash[fruit][:count] = fruit.count
+      new_hash[fruit] = infos
+      new_hash[fruit][:count] = fruit.count
+    end
   end
   new_hash
 end
