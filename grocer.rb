@@ -12,36 +12,27 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  new_hash = {}
-  cart.each do |fruit, info|
-    coupons.each do |category, value|
-      if category.include?(fruit)
-        new_hash[fruit] = info
-        new_hash[]
-        
+  coupons.each do |coupon_hash|
+    fruit_name = coupon_hash[:item]
+    new_coupon_hash = {
+      :price => coupon_hash[:cost],
+      :clearance => "true",
+      :count => coupon_hash[:num]
+    }
+    
+     if cart.key?(fruit_name)
+      new_coupon_hash[:clearance] = cart[fruit_name][:clearance]
+      if cart[fruit_name][:count]>= new_coupon_hash[:count]
+        new_coupon_hash[:count] = (cart[fruit_name][:count]/new_coupon_hash[:count]).floor
+        cart[fruit_name][:count] = (coupon_hash[:num])%(cart[fruit_name][:count])
+      end
+      cart[fruit_name + " W/COUPON"] = new_coupon_hash 
+    end
+    end
+  return cart
 end
 
-{
-  "AVOCADO" => {:price => 3.0, :clearance => true, :count => 3},
-  "KALE"    => {:price => 3.0, :clearance => false, :count => 1}
-}
-```
-and a coupon for avocados that looks like this:
 
-```ruby
-{:item => "AVOCADO", :num => 2, :cost => 5.0}
-
-```
-
-then `apply_coupons` should return the following hash:
-
-```ruby
-{
-  "AVOCADO" => {:price => 3.0, :clearance => true, :count => 1},
-  "KALE"    => {:price => 3.0, :clearance => false, :count => 1},
-  "AVOCADO W/COUPON" => {:price => 5.0, :clearance => true, :count => 1},
-}
-```
 
 def apply_clearance(cart)
   # code here
