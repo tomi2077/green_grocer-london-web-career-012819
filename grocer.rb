@@ -3,7 +3,7 @@ def consolidate_cart(cart)
   cart.each do |fruit, infos|
    new_hash[fruit] << infos
    new_hash[fruit][infos][:count] << fruit.length
-   
+  end
 end
 
 def apply_coupons(cart, coupons)
@@ -11,7 +11,7 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  # code here
+  # code herel
 end
 
 def checkout(cart, coupons)
