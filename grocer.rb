@@ -37,7 +37,36 @@ def apply_clearance(cart)
 end
 
 def checkout(cart, coupons)
-  # code here
+  cost = 0.00
+  cart.each do |item|
+    item.each do |name, attribute|
+      unless coupons.nil?
+        coupons.each do |coupon|
+          if name == coupon[:item] && attribute[:count] >= coupon[:num]
+            cost += coupon[:cost] * (attribute[:count]/coupon[:num])
+            attribute[:count] = attribute[:count] % coupon[:num]
+          end
+        end
+      end
+      if attribute[:clearance]
+        cost += (attribute[:price] * attribute[:count]) * 0.8
+      else
+        cost += attribute[:price] * attribute[:count]
+      end
+    end
+  end
+
+  over_5 = false
+
+  cart.each do |item|
+    item.each do |name, attribute| 
+      over_5 = true if attribute[:price] > 5
+    end
+  end
+
+  cost -= 10 unless over_5 || cost <= 10
+  
+  cost
 end
 
 
