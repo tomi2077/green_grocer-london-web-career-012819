@@ -18,3 +18,4 @@ end
 def find_coupon(name)
   coupons.find { |coupon| coupon[:item] == name }
 end
+
