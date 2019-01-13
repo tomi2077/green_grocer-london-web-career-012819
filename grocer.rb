@@ -4,6 +4,7 @@ def consolidate_cart(cart)
     new_hash[fruit] << infos
     new_hash[fruit][infos][:count] << fruit.length
   end
+  new_hash
 end
 
 def apply_coupons(cart, coupons)
