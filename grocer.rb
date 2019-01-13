@@ -12,7 +12,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  coupons.each do |coupon_hash|
+  coupons.each do |information|    #coupon_hash
     fruit_name = coupon_hash[:item]
     new_coupon_hash = {
       :price => coupon_hash[:cost],
