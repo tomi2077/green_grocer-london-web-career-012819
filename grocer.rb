@@ -20,17 +20,3 @@ def checkout(cart, coupons)
 end
 
 
-[
-  {"AVOCADO" => {:price => 3.0, :clearance => true }},
-  {"AVOCADO" => {:price => 3.0, :clearance => true }},
-  {"KALE"    => {:price => 3.0, :clearance => false}}
-]
-```
-then the method should return the hash below:
-
-```ruby
-{
-  "AVOCADO" => {:price => 3.0, :clearance => true, :count => 2},
-  "KALE"    => {:price => 3.0, :clearance => false, :count => 1}
-}
-```
