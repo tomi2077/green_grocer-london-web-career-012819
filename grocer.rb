@@ -24,7 +24,7 @@ def apply_coupons(cart, coupons)
       new_coupon_hash[:clearance] = cart[fruit_name][:clearance]
       if cart[fruit_name][:count]>= new_coupon_hash[:count]
         new_coupon_hash[:count] = (cart[fruit_name][:count]/new_coupon_hash[:count]).floor
-        cart[fruit_name][:count] = (coupon_hash[:num])%(cart[fruit_name][:count])
+        cart[fruit_name][:count] = (information[:num])%(cart[fruit_name][:count])
       end
       cart[fruit_name + " W/COUPON"] = new_coupon_hash 
     end
