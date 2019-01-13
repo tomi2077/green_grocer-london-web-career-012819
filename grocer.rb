@@ -12,7 +12,13 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  cart.each 
+  new_hash = {}
+  cart.each do |fruit, info|
+    coupons.each do |category, value|
+      if category.include?(fruit)
+        new_hash[fruit] = info
+        new_hash[]
+        
 end
 
 {
