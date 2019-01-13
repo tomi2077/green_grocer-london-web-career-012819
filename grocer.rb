@@ -13,11 +13,11 @@ end
 
 def apply_coupons(cart, coupons)
   coupons.each do |information|    #coupon_hash
-    fruit_name = coupon_hash[:item]
+    fruit_name = information[:item]
     new_coupon_hash = {
-      :price => coupon_hash[:cost],
+      :price => information[:cost],
       :clearance => "true",
-      :count => coupon_hash[:num]
+      :count => information[:num]
     }
     
      if cart.key?(fruit_name)
