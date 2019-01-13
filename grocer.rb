@@ -11,7 +11,7 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  # code herel
+  # code here
 end
 
 def checkout(cart, coupons)
